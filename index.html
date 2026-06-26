@@ -48,8 +48,8 @@
                         },
                         blob: {
                             '0%': { transform: 'translate(0px, 0px) scale(1)' },
-                            '33%': { transform: 'translate(30px, -50px) scale(1.1)' },
-                            '66%': { transform: 'translate(-20px, 20px) scale(0.9)' },
+                            '33%': { transform: 'translate(15px, -25px) scale(1.05)' },
+                            '66%': { transform: 'translate(-10px, 10px) scale(0.95)' },
                             '100%': { transform: 'translate(0px, 0px) scale(1)' },
                         }
                     }
@@ -80,10 +80,16 @@
             background: #8b5cf6;
         }
 
+        html {
+            overflow-x: hidden;
+            touch-action: pan-y;
+        }
+
         body {
             background-color: #0B0B14;
             color: #f3f4f6;
             overflow-x: hidden;
+            max-width: 100vw;
         }
 
         /* Glassmorphism Classes */
@@ -149,6 +155,20 @@
 
         .delay-300 {
             transition-delay: 300ms;
+        }
+
+        /* Mobile overflow containment */
+        @media (max-width: 768px) {
+            .animate-blob {
+                animation: none;
+            }
+            .glass-card:hover {
+                transform: translateY(-4px) scale(1.01);
+            }
+            .animate-marquee-left,
+            .animate-marquee-right {
+                /* keep animating but ensure parent clips */
+            }
         }
 
         /* Moving Grid Background */
@@ -258,11 +278,11 @@
             }
 
             33% {
-                transform: translate(30px, -50px) scale(1.1);
+                transform: translate(15px, -25px) scale(1.05);
             }
 
             66% {
-                transform: translate(-20px, 20px) scale(0.9);
+                transform: translate(-10px, 10px) scale(0.95);
             }
 
             100% {
@@ -345,11 +365,11 @@
         </div>
 
         <!-- Teks Intro -->
-        <h1 class="text-4xl md:text-5xl font-bold text-white mb-2 anim-fade-up z-10 tracking-wide"
+        <h1 class="text-4xl md:text-5xl font-bold text-white mb-2 anim-fade-up z-10 tracking-wide text-center"
             style="animation-delay: 1.2s;">
             Welcome To My
         </h1>
-        <h2 class="text-5xl md:text-6xl font-extrabold text-brand-primary mb-12 anim-fade-up z-10 tracking-wide drop-shadow-[0_0_15px_rgba(139,92,246,0.5)]"
+        <h2 class="text-5xl md:text-6xl font-extrabold text-brand-primary mb-12 anim-fade-up z-10 tracking-wide drop-shadow-[0_0_15px_rgba(139,92,246,0.5)] text-center"
             style="animation-delay: 1.4s;">
             Portfolio Website
         </h2>
@@ -367,18 +387,32 @@
 
     <!-- Ambient Background Elements -->
     <div
-        class="fixed top-[-10%] left-[-10%] w-[40vw] h-[40vw] rounded-full bg-brand-primary/20 blur-[120px] mix-blend-screen animate-blob pointer-events-none -z-10">
+        class="fixed top-[-10%] left-[-10%] w-[40vw] h-[40vw] rounded-full bg-brand-primary/20 blur-[120px] mix-blend-screen animate-blob pointer-events-none -z-10 overflow-hidden">
     </div>
     <div
-        class="fixed top-[20%] right-[-10%] w-[30vw] h-[30vw] rounded-full bg-brand-secondary/20 blur-[100px] mix-blend-screen animate-blob animation-delay-2000 pointer-events-none -z-10">
+        class="fixed top-[20%] right-[-10%] w-[30vw] h-[30vw] rounded-full bg-brand-secondary/20 blur-[100px] mix-blend-screen animate-blob animation-delay-2000 pointer-events-none -z-10 overflow-hidden">
     </div>
     <div
-        class="fixed bottom-[-10%] left-[20%] w-[35vw] h-[35vw] rounded-full bg-brand-accent/10 blur-[120px] mix-blend-screen animate-blob animation-delay-4000 pointer-events-none -z-10">
+        class="fixed bottom-[-10%] left-[20%] w-[35vw] h-[35vw] rounded-full bg-brand-accent/10 blur-[120px] mix-blend-screen animate-blob animation-delay-4000 pointer-events-none -z-10 overflow-hidden">
     </div>
 
     <!-- --- NAVBAR --- -->
     <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 py-4 border-b border-transparent">
         <div class="max-w-7xl mx-auto px-6 md:px-12 flex justify-between items-center">
+            <!-- Logo -->
+            <a href="#home" class="text-white font-bold text-lg tracking-wide flex items-center gap-2">
+                <span class="text-brand-primary">&lt;</span>Naufal<span class="text-brand-primary">/&gt;</span>
+            </a>
+
+            <!-- Desktop Nav Links -->
+            <div class="hidden md:flex items-center gap-8">
+                <a href="#home" class="text-white font-medium hover:text-brand-primary transition-colors text-sm">Home</a>
+                <a href="#about" class="text-gray-400 font-medium hover:text-brand-primary transition-colors text-sm">About</a>
+                <a href="#portfolio" class="text-gray-400 font-medium hover:text-brand-primary transition-colors text-sm">Portfolio</a>
+                <a href="#contact" class="text-gray-400 font-medium hover:text-brand-primary transition-colors text-sm">Contact</a>
+            </div>
+
+            <!-- Mobile Hamburger -->
             <button id="mobile-menu-btn" class="md:hidden text-white p-2">
                 <i data-lucide="menu" class="w-6 h-6"></i>
             </button>
@@ -404,7 +438,7 @@
                     <i data-lucide="rocket" class="w-4 h-4"></i> Ready to Innovate
                 </div>
 
-                <h1 class="reveal delay-100 text-5xl md:text-6xl lg:text-7xl font-bold leading-tight mb-4 text-white">
+                <h1 class="reveal delay-100 text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-tight mb-4 text-white">
                     Frontend <br /> <span class="text-gradient">Develover</span>
                 </h1>
 
@@ -473,7 +507,7 @@
             </div>
 
             <!-- Right Illustration -->
-            <div class="hidden lg:flex justify-center items-center z-10 relative">
+            <div class="flex justify-center items-center z-10 relative lg:block">
                 <!-- Decorative Circle -->
                 <div
                     class="absolute inset-0 border border-brand-primary/30 rounded-full animate-spin-slow opacity-50 scale-110 border-dashed">
@@ -483,7 +517,7 @@
                 </div>
                 <!-- Main Image/Illustration -->
                 <img src="foto/profile.jpg" alt="Coding Setup"
-                    class="w-[80%] rounded-2xl shadow-2xl shadow-brand-primary/20 animate-float object-cover aspect-square border border-white/10"
+                    class="w-48 sm:w-64 lg:w-[80%] rounded-2xl shadow-2xl shadow-brand-primary/20 animate-float object-cover aspect-square border border-white/10"
                     style="clip-path: path('M 10% 0 Q 98% 0 100% 4% L 100% 96% Q 96% 100% 90% 100% L 10% 100% Q 2% 100% 0 96% L 0 4% Q 0 2% 10% 0 Z');" />
             </div>
 
@@ -529,10 +563,10 @@
                 <div class="lg:col-span-2 flex justify-center reveal delay-100 relative group">
                     <!-- Tech Rings -->
                     <div
-                        class="absolute inset-0 m-auto w-[110%] h-[110%] border-2 border-brand-primary/20 border-dashed rounded-full animate-spin-slow opacity-70 group-hover:border-brand-primary/60 transition-colors duration-500">
+                        class="absolute inset-0 m-auto w-full h-full border-2 border-brand-primary/20 border-dashed rounded-full animate-spin-slow opacity-70 group-hover:border-brand-primary/60 transition-colors duration-500">
                     </div>
                     <div
-                        class="absolute inset-0 m-auto w-[125%] h-[125%] border border-brand-accent/20 border-dotted rounded-full animate-spin-slow-reverse opacity-50 group-hover:border-brand-accent/60 transition-colors duration-500">
+                        class="absolute inset-0 m-auto w-full h-full border border-brand-accent/20 border-dotted rounded-full animate-spin-slow-reverse opacity-50 group-hover:border-brand-accent/60 transition-colors duration-500">
                     </div>
 
                     <div
@@ -1106,6 +1140,22 @@
     <script>
         // Initialize Icons
         lucide.createIcons();
+        // --- MOBILE MENU LOGIC ---
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        // 1. Fungsi buka/tutup menu saat tombol hamburger diklik
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // 2. Otomatis menutup menu mobile setelah user mengklik salah satu link
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
 
         // Navbar Scroll Effect
         const navbar = document.getElementById('navbar');
@@ -1167,11 +1217,6 @@
 
         // Start typing effect slightly after load
         setTimeout(typeWriter, 1000);
-
-        // Mobile Menu Toggle (Simplified)
-        document.getElementById('mobile-menu-btn').addEventListener('click', () => {
-            alert('Menu dropdown clicked! (Implement your mobile menu logic here)');
-        });
 
         // Add Comment Logic (Simulation)
         function addComment(e) {
